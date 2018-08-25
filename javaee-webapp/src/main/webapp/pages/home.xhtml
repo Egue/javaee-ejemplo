@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" >
+      
+
+<h:head> </h:head> 
+<h:body> 
+	<h:form id="form_prime">
+	
+    <p:growl id="growl" showDetail="true" sticky="true" />
+		<p:panel id="basic" header = "Registro de Miembros" 
+		footer="Lista de Miembros" style="margin-bottom:20px">
+		<h:panelGrid columns="2" cellspading = "10">
+		<p:outputLabel for="idNombreMember" value="Nombre"/>
+		<p:inputText id="idNombreMember" value="#{registroPrimeController.newMember.name}"></p:inputText>
+		
+		<p:outputLabel for="idApellidoMember" value="Apellido"/>
+		<p:inputText id="idApellidoMember" value="#{registroPrimeController.newMember.apellido}"></p:inputText>
+		
+		<p:outputLabel for="idemailMember" value="Email"/>
+		<p:inputText id="idemailMember" value="#{registroPrimeController.newMember.email}"></p:inputText>
+		
+		<p:outputLabel for="idTelefonoMember" value="Telefono"/>
+		<p:inputText id="idTelefonoMember" value="#{registroPrimeController.newMember.phoneNumber}"></p:inputText>
+		
+		</h:panelGrid>
+<p:commandButton value="Guardar" id="withIcon" action="#{registroPrimeController.register()}"  icon="ui-icon-disk"
+ update="growl tableMembers" />
+ 
+		</p:panel>
+		
+	<p:dataTable id="tableMembers" var="_members" value="#{registroPrimeController.memberList}">
+    <p:column headerText="Id">
+        <h:outputText value="#{_members.id}" />
+    </p:column>
+ 
+    <p:column headerText="Nombre">
+        <h:outputText value="#{_members.name}" />
+    </p:column>
+ 
+    <p:column headerText="Apellido">
+        <h:outputText value="#{_members.apellido}" />
+    </p:column>
+ 
+    <p:column headerText="Email">
+        <h:outputText value="#{_members.email}" />
+    </p:column>
+    <p:column headerText="Teléfono">
+        <h:outputText value="#{_members.phoneNumber}" />
+    </p:column>
+    <p:column headerText="Acción">
+        
+    </p:column>
+</p:dataTable>
+	
+	</h:form>
+</h:body> 
+</html>
